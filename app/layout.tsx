@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Eczar, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Dock } from "@/components/app/Dock";
+import { navigationConfig } from "@/config/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -9,6 +11,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const titleFont = Eczar({
+  variable: "--font-title",
+  weight: ["400", "500"],
   subsets: ["latin"],
 });
 
@@ -23,11 +31,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html
+      lang="en"
+      className={`${titleFont.variable} ${geistMono.variable} antialiased`}
+    >
+      <body className="min-h-screen w-full">
+        <main className="pt-28 pb-8 px-4 md:px-8 w-full">{children}</main>
+        <div className="fixed bottom-4 left-0 right-0 z-50 pointer-events-none flex justify-center">
+          <div className="pointer-events-auto">
+            <Dock items={navigationConfig} />
+          </div>
+        </div>
       </body>
     </html>
   );
