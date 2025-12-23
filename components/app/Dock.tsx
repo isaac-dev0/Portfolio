@@ -24,10 +24,10 @@ export function Dock({ items }: DockProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-[1000] flex justify-center p-4 pointer-events-none">
+    <header className="fixed top-0 inset-x-0 z-1000 flex justify-center p-4 pointer-events-none">
       <nav
         className={cn(
-          "flex max-w-[768px] items-center justify-center rounded-full px-4 md:px-6 md:py-4 py-2 transition-all duration-300 pointer-events-auto",
+          "flex max-w-3xl items-center justify-center rounded-full px-4 md:px-6 md:py-4 py-2 transition-all duration-300 pointer-events-auto",
           isScrolled
             ? "bg-background/20 backdrop-blur-2xl backdrop-saturate-150 backdrop-brightness-75 border border-white/10 shadow-xl"
             : "bg-transparent border border-transparent"
@@ -48,7 +48,7 @@ export function Dock({ items }: DockProps) {
                     "bg-white/10 text-white shadow-sm ring-1 ring-white/20"
                 )}
               >
-                <span className="text-sm font-medium tracking-tight md:text-base md:text-xl">
+                <span className="text-sm font-medium tracking-tight md:text-xl">
                   {item.label}
                 </span>
               </Link>
